@@ -21,3 +21,5 @@ def cantidad(text,arg):
     except Exception as error:
         print("todo bien "+ error)
         return 0
+
+
