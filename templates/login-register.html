@@ -1,0 +1,140 @@
+{% extends "shop-full-width.html" %}
+{% block main %}
+<div class="container">
+    <hr/>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="featured-boxes">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="featured-box featured-box-primary align-left mt-xlg" style="height: 327px;">
+                            <div class="box-content">
+                                <h4 class="heading-primary text-uppercase mb-md">SOY CLIENTE QUIERO INICIAR SESIÓN</h4>
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <label>nombre de Usuario: </label>
+                                                <input type="text" required="" id="usuario" value="" class="form-control input-lg">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <a class="pull-right" href="#">(¿Desea recordar su contraseña?)</a>
+                                                <label>Contraseña</label>
+                                                <input type="password" required="" id="password" value="" class="form-control input-lg">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <span class="remember-box checkbox">
+                                                <label for="rememberme">
+                                                    <input type="checkbox" id="rememberme" name="rememberme">Recuerdame
+                                                </label>
+                                            </span>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input id="iniciar" type="submit" value="Iniciar Sesión" class="btn btn-primary pull-right mb-xl" data-loading-text="Loading...">
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="featured-box featured-box-primary align-left mt-xlg" style="height: 327px;">
+                            <div class="box-content">
+                                <h4 class="heading-primary text-uppercase mb-md">NO TENGO CUENTA QUIERO REGISTRARME COMO CLIENTE WEB</h4>
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div style="text-align: center">
+                                                <label id="errorusuario" class="label label-danger"><strong>Es posible que las contraseñas no coincidan...</strong></label>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <label>Nombre de Usuario: </label>
+                                                <input type="text" required="" id="user" value="" class="form-control input-lg">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div style="text-align: center">
+                                                <label id="errornombres" class="label label-danger"><strong>Es posible que las contraseñas no coincidan...</strong></label>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <label>Nombres: </label>
+                                                <input type="text" required="" id="nombres" value="" class="form-control input-lg">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div style="text-align: center">
+                                                <label id="errorapellidos" class="label label-danger"><strong>Es posible que las contraseñas no coincidan...</strong></label>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <label>Apellidos: </label>
+                                                <input type="text" required="" id="apellidos" value="" class="form-control input-lg">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div style="text-align: center">
+                                                <label id="erroremail" class="label label-danger"><strong>Es posible que las contraseñas no coincidan...</strong></label>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <label>Dirección de E-mail: </label>
+                                                <input type="text" required="" id="email" value="" class="form-control input-lg">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div style="text-align: center">
+                                                <label id="error" class="label label-danger"><strong>Es posible que las contraseñas no coincidan...</strong></label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label>Contraseña: </label>
+                                                <input type="password" required="" id="password1" value="" class="form-control input-lg">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label>Repetir Contraseña: </label>
+                                                <input type="password" required="" id="password2" value="" class="form-control input-lg">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <input type="submit" id="registrar" value="Registrarme Gratis" class="btn btn-primary pull-right mb-xl" data-loading-text="Loading...">
+                                        </div>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/static/Funcionalidad/Aplicacion.js"></script>
+<script>
+    $(document).ready(function(){
+        $("#error").hide();
+        $("#errorusuario").hide();
+        $("#errornombres").hide();
+        $("#errorapellidos").hide();
+        $("#erroremail").hide();
+
+        $("#iniciar").click(function(){
+            login($("#usuario").val(),$("#password").val())
+        })
+
+        $("#registrar").click(function(){
+            registrar_usuario($("#user").val(),$("#nombres").val(),$("#apellidos").val(),$("#email").val(),$("#password1").val(),$("#password2").val())
+        })
+    })
+
+</script>
+{% endblock %}

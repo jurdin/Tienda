@@ -1,0 +1,100 @@
+{% extends "shop-full-width.html" %}
+{% block main %}
+<div id="googlemaps" class="google-map">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63733.98834865817!2d-79.99569216062176!3d-3.2568588929695625!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x90330e252f104ed1%3A0xea4e189f2b2da97e!2sMachala!5e0!3m2!1ses!2sec!4v1453044358724" frameborder="0" style="border:0; width: 100%; height: 100%" allowfullscreen></iframe>
+</div>
+
+<div class="container">
+    <div class="row">
+    <div class="col-md-6">
+
+        <div class="alert alert-success hidden" id="contactSuccess">
+            <strong>Success!</strong> Your message has been sent to us.
+        </div>
+
+        <div class="alert alert-danger hidden" id="contactError">
+            <strong>Error!</strong> There was an error sending your message.
+        </div>
+
+        <h2 class="mb-sm mt-sm"><strong>Contact</strong> Us</h2>
+        <form id="contactForm" action="#" method="POST">
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-md-6">
+                        <label>Su nombre *</label>
+                        <input type="text" value="" data-msg-required="Please enter your name." maxlength="100" class="form-control" name="name" id="name" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label>Dirección de email *</label>
+                        <input type="email" value="" data-msg-required="Please enter your email address." data-msg-email="Please enter a valid email address." maxlength="100" class="form-control" name="email" id="email" required>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <label>Asunto</label>
+                        <input type="text" value="" data-msg-required="Please enter the subject." maxlength="100" class="form-control" name="subject" id="subject" required>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <label>Mensaje *</label>
+                        <textarea maxlength="5000" data-msg-required="Please enter your message." rows="10" class="form-control" name="message" id="message" required></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <input type="submit" value="Enviar Mensaje" class="btn btn-primary btn-lg mb-xlg" data-loading-text="Loading...">
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-6">
+
+        <h4 class="heading-primary mt-lg">Encuentranos en<strong> Machala</strong></h4>
+        <p>Centro Comercial Paseo Shopping Machala.</p>
+
+        <hr>
+
+        <h4 class="heading-primary">Nuestra <strong>Tienda</strong></h4>
+        <ul class="list list-icons list-icons-style-3 mt-xlg">
+            <li><i class="fa fa-map-marker"></i> <strong>Dirección:</strong> 1234 Machala, El Oro, Ecuador</li>
+            <li><i class="fa fa-phone"></i> <strong>Teléfono: :</strong> (123) 456-789</li>
+            <li><i class="fa fa-envelope"></i> <strong>Nuestro E-mail:</strong> <a href="mailto:mail@example.com">mail@example.com</a></li>
+        </ul>
+
+        <hr>
+
+        <h4 class="heading-primary">Hora de  <strong>Atención</strong></h4>
+        <ul class="list list-icons list-dark mt-xlg">
+            <li><i class="fa fa-clock-o"></i> Lunes  - Viernes 10am a 5pm</li>
+            <li><i class="fa fa-clock-o"></i> Sabados - 9am a 2pm</li>
+            <li><i class="fa fa-clock-o"></i> Domingo - 9am a 2pm</li>
+        </ul>
+
+    </div>
+
+</div>
+</div>
+<section class="call-to-action call-to-action-default with-button-arrow call-to-action-in-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="call-to-action-content">
+                    <h3>Para Comprar.com <strong>nos interesa</strong> todas <strong>sus opiniones</strong></h3>
+                    <p>No dude en escribirnos, con gusto le atenderemos.</p>
+                </div>
+                {% if not usuario %}
+                    <div class="call-to-action-btn">
+                        <a href="/Usuario/login-register/" target="_blank" class="btn btn-lg btn-primary">Abrir una cuenta</a><span class="arrow hlb hidden-xs hidden-sm hidden-md" data-appear-animation="rotateInUpLeft" style="top: -12px;"></span>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

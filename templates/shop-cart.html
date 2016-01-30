@@ -1,0 +1,215 @@
+{% extends "shop-full-width.html" %}
+{% block main %}
+    {% load producto_extra %}
+<div class="container">
+<div class="row">
+    <div class="col-md-12">
+        <hr class="tall">
+    </div>
+</div>
+<div style="text-align: center">
+    <h4 class="">Mi lista de deseos</h4>
+</div>
+<div class="row">
+    <div class="col-md-12">
+
+        <div class="featured-boxes">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="featured-box featured-box-primary align-left mt-sm">
+                        <div class="box-content">
+                            <form method="post" action="">
+                                <table class="shop_table cart">
+                                    <thead>
+                                        <tr>
+                                            <th class="product-remove">
+                                                &nbsp;
+                                            </th>
+                                            <th class="product-thumbnail">
+                                                &nbsp;
+                                            </th>
+                                            <th class="product-name">
+                                                Producto
+                                            </th>
+                                            <th class="product-price">
+                                                Precio
+                                            </th>
+                                            <th class="product-quantity" >
+                                                Cantidad
+                                            </th>
+                                            <th style="text-align: right">
+                                               IVA
+                                            </th >
+                                            <th class="product-subtotal" style="text-align: right">
+                                                Total
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for item in items %}
+                                        <tr class="cart_table_item">
+                                            <td class="product-remove">
+                                                <a title="Remove this item" class="remove" href="/Productos/al-carrito/eliminar/{{ item.id }}">
+                                                    <i class="fa fa-times"></i>
+                                                </a>
+                                            </td>
+                                            <td class="product-thumbnail">
+                                                <a href="/Productos/ver_mas/{{ item.producto.id }}">
+                                                    <img width="100" height="100" alt="" class="img-responsive" src="/media/{{ imagen|imagen:item.producto.id }}">
+                                                </a>
+                                            </td>
+                                            <td class="product-name">
+                                                <a href="/Productos/ver_mas/{{ item.producto.id }}">{{ item.producto.nombre }}</a>
+                                            </td>
+                                            <td class="product-price">
+                                                <span class="amount">${{ item.producto.precio }}</span>
+                                            </td>
+                                            <td class="product-quantity" style="text-align: center" >
+                                                <span>{{ item.cantidad }}</span>
+                                            </td>
+                                            <td style="text-align: right">
+                                                <span class="amount">${{ item.iva }}</span>
+                                            </td>
+                                            <td class="product-subtotal" style="text-align: right">
+                                                <span class="amount">${{ item.subtotal }}</span>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                    <tr><td></td><td></td><td></td><td></td><td colspan="2">Total Generado: </td><td style="color: darkred; font-weight:bold">$ {%if pedido.total_pedido %}{{ pedido.total_pedido }}{% else %}0,00{% endif %}</td></tr>
+                                    </tbody>
+                                </table>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="featured-boxes">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="featured-box featured-box-primary align-left mt-xlg">
+                        <div class="box-content">
+                            <h4 class="heading-primary text-uppercase mb-md">TOTAL GENERADO POR EL PEDIDO</h4>
+                            <table class="cart-totals">
+                                <tbody>
+                                    <tr class="cart-subtotal">
+                                        <th>
+                                            <strong>Subtotal: </strong>
+                                        </th>
+                                        <td>
+                                            <strong><span class="amount">$ {% if pedido.subtotal %}{{ pedido.subtotal }}{% else %}0,00{% endif %} </span></strong>
+                                        </td>
+                                    </tr>
+                                    <tr class="shipping">
+                                        <th>
+                                            <strong>IVA:</strong>
+                                        </th>
+                                        <td>
+                                            $ {% if pedido.iva %}{{ pedido.iva }}{% else %}0,00{% endif %} <input type="hidden" value="{{ pedido.iva }}" id="shipping_method" name="shipping_method">
+                                        </td>
+                                    </tr>
+                                    <tr class="total">
+                                        <th>
+                                            <strong>Total de la Orden:</strong>
+                                        </th>
+                                        <td>
+                                            <strong><span class="amount">$ {% if pedido.total_pedido %}{{ pedido.total_pedido }}{% else %}0,00{% endif %} </span></strong>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                {% if items %}
+                    <div class="actions-continue">
+                        <button type="submit" class="btn pull-right btn-primary btn-lg">Continuar con el pago <i class="fa fa-angle-right ml-xs"></i></button>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+    </div>
+</div>
+    <hr/>
+    <div style="text-align: center">
+        <h4>Mis Compras Efectuadas</h4>
+    </div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="featured-boxes">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="featured-box featured-box-primary align-left mt-sm" style="">
+                        <div class="box-content">
+                            <table class="shop_table cart">
+                                <thead>
+                                    <tr>
+                                        <th class="product-price">
+                                            Id
+                                        </th>
+                                        <th class="product-name">
+                                            Fecha
+                                        </th>
+                                        <th class="product-price">
+                                            Subtotal
+                                        </th>
+                                        <th class="product-price">
+                                            IVA
+                                        </th>
+                                        <th class="product-price">
+                                            Total del Pedido
+                                        </th>
+                                        <th class="product-price">
+                                            Detalles
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for pedido in pedidos %}
+                                    <tr class="cart_table_item">
+                                        <td class="product-price">
+                                            <span>{{ pedido.id }}</span>
+                                        </td>
+                                        <td class="product-name">
+                                            <span >{{ pedido.fecha }}</span>
+                                        </td>
+                                        <td class="product-price">
+                                            <span >${{ pedido.subtotal }}</span>
+                                        </td>
+                                        <td class="product-price">
+                                            <span >${{ pedido.iva }}</span>
+                                        </td>
+                                        <td class="product-price" style="text-align: center">
+                                            <span >${{ pedido.total_pedido }}</span>
+                                        </td>
+                                        <td style="text-align: center">
+                                            <span>{% if pedido.procesado %}Procesado{% else %}Sin Confirmar{% endif %} </span>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<script>
+$(document).ready(function(){
+    $(document).on("click",".quantity",function(){
+        alert($(".cantidad").val())
+    })
+})
+</script>
+{% endblock %}
